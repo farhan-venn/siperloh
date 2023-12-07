@@ -1,0 +1,37 @@
+/* .navbar-default{
+    padding: 30px;
+} */
+
+.navbar-default {
+    text-decoration: none;
+    background-color: #ffff;
+    padding: 30px;
+}
+.Tulisan {
+    margin-top: 70px;
+}
+
+.gambar {
+    height: 200px;
+    width: 350px;
+}
+
+.tentang hr{
+    width: 250px;
+    border-top: 3px solid;
+}
+
+.tentang {
+    margin-top: 70px;
+}
+
+
+.Kontak hr {
+    width: 250px;
+    border-top: 3px solid;
+}
+
+.kontak {
+    margin-top: 100px;
+}
+
