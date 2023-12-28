@@ -1,3 +1,29 @@
+<?php
+include 'koneksi.php';
+
+if(isset($_POST['submit'])){
+    $nisn = $_POST['nisn'];
+    $nama = $_POST['nama'];
+    $judul_buku = $_POST['judul_buku'];
+    $kode_buku = $_POST['kode_buku'];
+    $tanggal_peminjaman = $_POST['tanggal_peminjaman'];
+    $status_pengembalian = $_POST['status_pengembalian'];
+
+    $sql = "INSERT INTO peminjam (nisn, nama, judul_buku, kode_buku, tanggal_peminjaman, status_pengembalian)
+    VALUES ('$nisn', '$nama', '$judul_buku', '$kode_buku', '$tanggal_peminjaman', '$status_pengembalian')";
+    
+    $result = mysqli_query($conn, $sql);
+
+    if ($result) {
+        echo "Data inserted successfully";
+        header('location:peminjaman.php');
+    } else {
+        die(mysqli_error($conn));
+    }
+    
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -52,9 +78,8 @@
                 <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Data Peminjaman:</h6>
-                        <a class="collapse-item" href="data _peminjaman.php">data peminjaman</a>
-                        <a class="collapse-item" href="data _peminjaman.php">data pengembalian</a>
-
+                        <a class="collapse-item" href="peminjaman.php">Peminjaman</a>
+                        <a class="collapse-item" href="pengembalian.php">Pengembalian</a>
                     </div>
                 </div>
             </li>
@@ -179,7 +204,47 @@
 
                 </nav>
                 <!-- End of Topbar -->
-
+        <!-----from peminjamn----->
+        <div class="container">
+        <div class="card">
+            <div class="card-header bg-primary text-white">
+                From Input Data Peminjaman Buku 
+            </div>
+            <div class="card-body">
+              <form method ="post">
+                <div class="from-group">
+                    <label>NISN</label>
+                    <input type="text" class="form-control" placeholder="Masukan NISN anda disini!" name="nisn">
+                </div>
+                <div class="form-group">
+                    <label>Nama</label>
+                    <input type="text" class="form-control" placeholder="masukan Nama anda disini!" name="nama">
+                </div>
+                <div class="form-group">
+                    <label>Judul Buku</label>
+                    <input type="text" class="form-control" placeholder="masukan judul buku anda disini!" name="judul_buku">
+                </div>
+                <div class="form-group">
+                    <label>Kode Buku</label>
+                    <input type="text" class="form-control" placeholder="masukan Kode buku anda disini!" name="kode_buku">
+                </div>
+                <div class="form-group">
+                    <label>Tanggal peminjaman</label>
+                    <input type="date" class="form-control" name="tanggal_peminjaman">
+                </div>
+                <div class="form-check">
+                    <label>Status pengembalian</label>
+                    <select type="text"class="from-control" name="status_pengembalian">
+                      <option value="">belum kembali</option>
+                      <option value="">Sudah kembali</option>  
+                    </select>            
+                </div>
+                <button type="submit" class="btn btn-primary">Simpan</button>
+              </form>  
+            </div>
+        </div>   
+        </div>
+        
 
     <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>
